@@ -1,0 +1,30 @@
+.ion-color-green {
+    --ion-color-base: #00B700;
+    --ion-color-base-rgb: 0, 183, 0;
+    --ion-color-contrast: #FFFFFF;
+    --ion-color-contrast-rgb: 255, 255, 255;
+    --ion-color-shade: #00A100;
+    --ion-color-tint: #1ABE1A;
+}
+
+.ion-color-red {
+    --ion-color-base: #B70000;
+    --ion-color-base-rgb: 183, 0, 0;
+    --ion-color-contrast: #FFFFFF;
+    --ion-color-contrast-rgb: 255, 255, 255;
+    --ion-color-shade: #A10000;
+    --ion-color-tint: #BE1A1A;
+}
+
+ion-fab-button {
+    width: 128px;
+    height: 128px;
+}
+
+ion-fab.fab-horizontal-center {
+    margin-inline-start: -64px;
+}
+
+ion-fab.fab-vertical-center {
+    margin-inline-start: -64px;
+}

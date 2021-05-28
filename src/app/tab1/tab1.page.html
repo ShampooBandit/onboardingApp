@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Time Clock
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Time Clock</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngIf="curTime">
+          <ion-text>{{curTime}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="center" horizontal="center">
+   <ion-fab-button *ngIf="!clockedIn" (click)="clockIn()" color="green">
+    <ion-icon name="alarm"></ion-icon>
+   </ion-fab-button>
+   <ion-fab-button *ngIf="clockedIn" (click)="clockOut()" color="red">
+    <ion-icon name="alarm"></ion-icon>
+   </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>
