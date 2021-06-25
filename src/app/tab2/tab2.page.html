@@ -1,8 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Timesheet
-    </ion-title>
+    <ion-row>
+      <ion-title>
+        Timesheet
+      </ion-title>
+      <ion-button (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -16,20 +21,39 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-datetime display-format="" placeholder="Start Date"></ion-datetime>
+        <ion-datetime [pickerOptions]="startPickerOptions" [(ngModel)]="startDate" display-format="" placeholder="Start Date"></ion-datetime>
       </ion-col>
       <ion-col></ion-col>
       <ion-col>
-        <ion-datetime display-format="" placeholder="End Date"></ion-datetime>
+        <ion-datetime [pickerOptions]="endPickerOptions" [(ngModel)]="endDate" display-format="" placeholder="End Date"></ion-datetime>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-text>Date</ion-text>
-            <ion-text>Start Time</ion-text>
-          </ion-item>
+        <ion-list id="sheet" *ngIf="checkSheet()">
+          <ng-container *ngFor="let slot of this.http.timesheet.data; index as i">
+            <ion-item *ngIf="checkDate(slot.startTime)">
+              <ion-col>
+                <ion-text>{{displayDate(slot.startTime)}}</ion-text>
+              </ion-col>
+                
+              <ion-col>
+                <ion-text>{{displayTime(slot.startTime)}}</ion-text>
+              </ion-col>
+                
+              <ion-col>
+                <ion-text>{{displayTime(slot.endTime)}}</ion-text>
+              </ion-col>
+                
+              <ion-col>
+                <ion-text>{{displayDuration(slot.startTime, slot.endTime)}}</ion-text>
+              </ion-col>
+                
+              <ion-col>
+                <ion-text>{{slot.project}}</ion-text>
+              </ion-col>
+            </ion-item>
+          </ng-container>
         </ion-list>
       </ion-col>
     </ion-row>

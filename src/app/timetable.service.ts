@@ -4,16 +4,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TimetableService {
-  private _timeSheet: timeSlot[];
+  private _timeSheet: any;
 
   constructor() { }
 
-  get timeSheet(): timeSlot[] {
+  get timeSheet(): any {
     return this._timeSheet;
   }
 
-  set timeSheet(sheet: timeSlot[]) {
+  set timeSheet(sheet: any) {
     this._timeSheet = sheet;
+  }
+
+  loadSheet() {
+    
   }
 
   addTime(slot: timeSlot) {
@@ -30,9 +34,9 @@ export class TimetableService {
 }
 
 interface timeSlot {
-  date: Date;
   startTime: Date;
   endTime: Date;
-  totalTime: Duration;
   project: string;
+  note: string;
+  userId: number;
 }

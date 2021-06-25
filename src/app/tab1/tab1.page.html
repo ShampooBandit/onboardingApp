@@ -1,8 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Time Clock
-    </ion-title>
+    <ion-row>
+      <ion-title>
+        Time Clock
+      </ion-title>
+      <ion-button (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-row>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -16,8 +22,18 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-item *ngIf="curTime">
-          <ion-text>{{curTime}}</ion-text>
+        <ion-datetime [(ngModel)]="curTime" display-format="MMM DD, YYYY HH:mm:ss" placeholder="Time"></ion-datetime>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="project" placeholder="Project..."></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="note" placeholder="Description..."></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

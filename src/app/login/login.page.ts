@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { HttpService } from '../http.service'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginPage implements OnInit {
   username: string = "";
   password: string = "";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpService) { }
 
   ngOnInit() {
   }
@@ -19,12 +20,9 @@ export class LoginPage implements OnInit {
   login(){
     if(this.username != "" && this.password != "")
     {
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.username
-        }
-      }
-      this.router.navigate(['/tabs/tab1'], navigationExtras);
+      this.http.login(this.username, this.password);
+
+      this.router.navigate(['/tabs/tab1']);
     }
   }
 }
